@@ -3,7 +3,8 @@ const hbs = require('hbs');
 const fs = require('fs');
 
 var app = express();
-
+//dynamic port binding in case of HEROKU deployment
+var port = process.env.PORT || 3000;
 //for allowing sue of partial hbs content
 hbs.registerPartials(__dirname+'/views/partials');
 //custom middlewares
@@ -66,6 +67,6 @@ app.get('/json',(request, response)=>{
 
 
 //start listening by binding on port 3000
-app.listen(3000,()=>{
+app.listen(port,()=>{
   console.log('server is up on port 3000');
 });
