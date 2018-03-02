@@ -21,10 +21,13 @@ app.use((request, response, next)=>{
   //sends the control to next handlers and continues the process of setting up and starting the server
   next();
 });
+/** Maintenance break
 app.use((request, response, next)=>{
   response.render('maintenance.hbs');
   //NO next() called to halt process here
 });
+*/
+
 //to allow some static content to user
 app.use(express.static(__dirname+'/public'));
 
@@ -42,7 +45,12 @@ app.set('view engine','hbs');
 //rendering tempate
 app.get('/about',(request, response)=>{
   response.render('about.hbs',{
-    titleText: 'About page',
+    titleText: 'About page'
+  });
+});
+app.get('/projects',(request, response)=>{
+  response.render('projects.hbs',{
+    titleText: 'Project page'
   });
 });
 
